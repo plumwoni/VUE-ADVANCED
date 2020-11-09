@@ -19,9 +19,20 @@ function fetchJobsList() {
   return axios.get(`${config.baseUrl}jobs/1.json`);
 }
 
+function fetchUserInfo(userName) {
+  return axios.get(`${config.baseUrl}user/${userName}.json`);
+}
+
+function fetchItem(itemId) {
+  console.log(`${config.baseUrl}item/${itemId}.json`);
+  return axios.get(`${config.baseUrl}item/${itemId}.json`);
+}
+
 // 3. 함수들을 export 
 export {
   fetchNewsList,
   fetchAskList,
   fetchJobsList,
+  fetchUserInfo,
+  fetchItem,
 }
