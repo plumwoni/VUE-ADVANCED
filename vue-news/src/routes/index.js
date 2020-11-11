@@ -14,18 +14,22 @@ export const router = new VueRouter({
   routes: [
     {
       path: '/',
+      name: 'root',
       redirect: '/news' // redirect
     },
     {
       path: '/news',
+      name: 'news',
       component: () => import('@/views/NewsView.vue'), // news-view에 해당하는 페이지만 들고온다.
     },
     {
       path: '/ask',
+      name: 'ask',
       component: AskView, // 상기 임포트하여 사용할 수도 있음
     },
     {
       path: '/jobs',
+      name: 'jobs',
       component: JobsView,
     },
     {

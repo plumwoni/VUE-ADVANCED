@@ -1,31 +1,15 @@
 <template>
   <div>
-    <!-- <div v-for="item in fetchedAsk" :key="item.id">{{ item.title }}</div> -->
-    <p v-for="item in fetchedAsk" :key="item.id">
-      <a v-bind:href="`item/${item.id}`">
-        {{ item.title }}
-      </a>
-      <small>{{ item.time_ago }}{{ item.user }}</small>
-    </p>
+    <list-item></list-item>
   </div>
-
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import ListItem from '../components/ListItem'
 
 export default {
-  computed: {
-    ...mapGetters([
-      'fetchedAsk'
-    ]),
-  },
-  created() {
-    this.$store.dispatch('FETCH_ASK');
+  components: {
+    ListItem,
   }
 }
 </script>
-
-<style>
-
-</style>
