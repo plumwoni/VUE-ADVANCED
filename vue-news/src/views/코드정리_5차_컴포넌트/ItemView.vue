@@ -4,12 +4,8 @@
     <section>
       <!-- 사용자 프로필 -->
       <user-profile :info="fetchedItem">
-        <!-- 일부 컴포넌트에서 이름에 링크를 걸고 싶을 때 router-link와 slot을 사용함 -->
-        <!-- <div slot="username">{{ fetchedItem.user }}</div> -->
-        <router-link slot="username" :to="`/user/${ fetchedItem.user }`">
-          {{ fetchedItem.user }}
-        </router-link>
-        <template slot="time">{{ 'Posted '+ fetchedItem.time_ago }}</template>
+        <div slot="username">{{ fetchedItem.user }}</div>
+        <template slot="time">{{ fetchedItem.time_ago }}</template>
       </user-profile>
 
     </section>

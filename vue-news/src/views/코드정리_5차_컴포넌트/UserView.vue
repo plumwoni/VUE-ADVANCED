@@ -1,13 +1,6 @@
 <template>
   <div>
-    <user-pfofile :info="userInfo">
-      <div slot="username">{{ userInfo.id }}</div>
-      <!-- 스타일링 -->
-      <!-- <template slot="time">{{ userInfo.created }}</template>
-      <div slot="karma">{{ userInfo.karma }}</div> -->
-      <span slot="time">{{ 'Joined '+ userInfo.created }}, </span>
-      <span slot="karma">{{ userInfo.karma }}</span>
-    </user-pfofile>
+    <user-pfofile :info="userInfo"></user-pfofile>
   </div>
 </template>
 

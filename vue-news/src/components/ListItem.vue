@@ -9,12 +9,23 @@
         </div>
         <!-- 기타 정보 영역  -->
         <div>
+          <!-- 타이틀 영역 -->
           <p class="item-title">
-            <a v-bind:href="item.url">{{ item.title }}</a>
+            <template v-if="item.domain">
+              <a :href="item.url">{{ item.title }}</a>
+            </template>
+            <template v-else>
+              <a :href="`item/${item.id}`">{{ item.title }}</a>
+            </template>
           </p>
           <small class="link-text">
             {{ item.time_ago }} by
-            <router-link v-bind:to="`/user/${item.user}`" class="link-text">{{ item.user }}</router-link>
+            <router-link 
+              v-if="item.user"
+              v-bind:to="`/user/${item.user}`" class="link-text">
+              {{ item.user }}
+            </router-link>
+            <a :href="item.url">{{ item.domain }}</a> <!-- domain 정보가 item.user가 있으면 없으므로 화면에 'No영향' -->
           </small>
         </div>
       </li>
@@ -24,26 +35,29 @@
 
 <script>
 export default {
+  data() {
+    return {
+      name: this.$route.name,
+    }
+  },
   computed: {
     listItems() {
-        const name = this.$route.name;
-        if (name === 'news') {
-            return this.$store.state.news;
-        } else if (name === 'ask') {
-            return this.$store.state.ask;
-        } else if (name === 'jobs') {
-            return this.$store.state.jobs;
-        }
-        return null;
+      if (this.name === 'news') {
+          return this.$store.state.news;
+      } else if (this.name === 'ask') {
+          return this.$store.state.ask;
+      } else if (this.name === 'jobs') {
+          return this.$store.state.jobs;
+      }
+      return null;
     },
   },
   created() {
-    const name = this.$route.name;
-    if (name === 'news') {
+    if (this.name === 'news') {
         this.$store.dispatch('FETCH_NEWS');
-    } else if (name === 'ask') {
+    } else if (this.name === 'ask') {
         this.$store.dispatch('FETCH_ASK');
-    } else if (name === 'jobs') {
+    } else if (this.name === 'jobs') {
         this.$store.dispatch('FETCH_JOBS');
     }
   }
