@@ -41,26 +41,27 @@ export default {
     }
   },
   computed: {
-    listItems() {
-      if (this.name === 'news') {
-          return this.$store.state.news;
+      listItems() {
+          if (this.name === 'news') {
+                return this.$store.state.news;
       } else if (this.name === 'ask') {
-          return this.$store.state.ask;
+            return this.$store.state.ask;
       } else if (this.name === 'jobs') {
-          return this.$store.state.jobs;
+            return this.$store.state.jobs;
       }
       return null;
     },
   },
-  created() {
-    if (this.name === 'news') {
-        this.$store.dispatch('FETCH_NEWS');
-    } else if (this.name === 'ask') {
-        this.$store.dispatch('FETCH_ASK');
-    } else if (this.name === 'jobs') {
-        this.$store.dispatch('FETCH_JOBS');
-    }
-  }
+  // 하이오더 컴포넌트를 위해서 해당 분기를 각 view로 옮기고 주석처리함
+  // created() {
+  //   if (this.name === 'news') {
+  //       this.$store.dispatch('FETCH_NEWS');
+  //   } else if (this.name === 'ask') {
+  //       this.$store.dispatch('FETCH_ASK');
+  //   } else if (this.name === 'jobs') {
+  //       this.$store.dispatch('FETCH_JOBS');
+  //   }
+  // }
 }
 </script>
 

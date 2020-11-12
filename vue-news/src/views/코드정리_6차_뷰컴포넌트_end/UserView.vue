@@ -19,7 +19,6 @@
  *    UserView dispatch -> store.actions -> API RQ -> API RS -> store.state -> UserView computed -> UserProfile props
  */
 import UserPfofile from '../components/UserPfofile.vue'
-import bus from '../utils/bus.js';
 
 export default {
   components: {
@@ -33,17 +32,7 @@ export default {
   created() {
     // vuex를 사용하기에 store를 view에서 dispatch하고 컴포넌트에서 불러서 사용할 수 있음
     const userName = this.$route.params.id;
-    bus.$emit('start:spinner');
-    setTimeout(() => {
-      this.$store.dispatch('FETCH_USER', userName)
-        .then(() => {
-          console.log('fetched');
-          bus.$emit('end:spinner');
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }, 3000);
+    this.$store.dispatch('FETCH_USER', userName);
   }
 }
 </script>
