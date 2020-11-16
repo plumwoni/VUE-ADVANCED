@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// 1. import {} from '../' 이런식으로 타이핑하여 자동완성으로 찾아감
-import AskView from '../views/AskView.vue';
-import JobsView from '../views/JobsView.vue';
 import ItemView from '@/views/ItemView.vue';
 import UserView from '@/views/UserView.vue';
-
+import NewsView from '../views/NewsView.vue';
+// import AskView from '../views/AskView.vue';
+import JobsView from '../views/JobsView.vue';
+import createListView from '../views/CreateListView.js';
 
 Vue.use(VueRouter);
 
@@ -20,12 +20,13 @@ export const router = new VueRouter({
     {
       path: '/news',
       name: 'news',
-      component: () => import('@/views/NewsView.vue'), // news-view에 해당하는 페이지만 들고온다.
+      component: NewsView, 
     },
     {
       path: '/ask',
       name: 'ask',
-      component: AskView, // 상기 임포트하여 사용할 수도 있음
+      // component: AskView,                 // Mixin 사용시
+      component: createListView('AskView'),  // 하이오더 컴포넌트(HOC) 사용시
     },
     {
       path: '/jobs',
