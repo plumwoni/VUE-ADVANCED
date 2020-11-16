@@ -36,35 +36,35 @@ export default {
   //     })
   // },
   FETCH_LIST({ commit }, listName) {
-    console.log("....", listName);
-    fetchList(listName)
+    // fetchList()의 결과값을 리턴하지 않으면 호출한 쪽의 비동기처리 부분에서 then()이 정상 동작하지 않음
+    return fetchList(listName)
       .then( ({ data }) => {
         commit('SET_LIST', data);
         return data;
       })
       .catch(error => {
         console.error(error);
-      })
+      });
   },
   FETCH_USER({ commit }, userName) {
-    fetchUserInfo(userName)
+    return fetchUserInfo(userName)
       .then( ({ data }) => {
         commit('SET_USER', data);
         return data;
       })
       .catch(error => {
         console.error(error);
-      })
+      });
   },
   FETCH_ITEM({ commit }, itemId) {
     console.log("--"+ itemId);
-    fetchItem(itemId)
+    return fetchItem(itemId)
       .then( ({data}) => {
         commit('SET_ITEM', data);
         return data;
       })
       .catch( error => {
         console.error(error);
-      })
+      });
   }
 }
