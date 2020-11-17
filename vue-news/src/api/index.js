@@ -14,9 +14,13 @@ function fetchUserInfo(userName) {
   return axios.get(`${config.baseUrl}user/${userName}.json`);
 }
 
-function fetchItem(itemId) {
-  console.log(`${config.baseUrl}item/${itemId}.json`);
-  return axios.get(`${config.baseUrl}item/${itemId}.json`);
+async function fetchItem(itemId) {
+  try {
+    const response = await axios.get(`${config.baseUrl}item/${itemId}.json`);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // 3. 함수들을 export 
