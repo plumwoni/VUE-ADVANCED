@@ -18,6 +18,7 @@
  
  example>
    > vue create todolist
+   ```
    Vue CLI v4.4.6
    ? Please pick a preset: Manually select features
    ? Check the features needed for your project: TS, Router, Vuex, Linter
@@ -28,6 +29,7 @@
    ? Pick additional lint features: Lint on save
    ? Where do you prefer placing config for Babel, ESLint, etc.? In dedicated config files
    ? Save this as a preset for future projects? (y/N)  Yes
+   ```
    
  4. CLI가 프로젝트 생성함
  
@@ -61,20 +63,21 @@ Vue.js 실전 강좌 비공개 리포지토리 주소 : https://github.com/joshu
 - 초심자를 위한 Github 협업 튜토리얼 : https://milooy.wordpress.com/2017/06/21/working-together-with-github-tutorial/
 
 # VSCode 플러그인 리스트
-Atom Keymap : 아톰의 키 설정을 불러오는 플러그인
-Vetur : Vue.js 플러그인
-Night Owl : 코드 하이라이팅 플러그인
-Material Dark Syntax : 코드 하이라이팅 플러그인
-Google Material Icon Theme : 폴더 아이콘 테마
-ESLint : 자바스크립트 문법 검사 플러그인
-TSLint : 타입스크립트 문법 검사 플러그인
-Auto Close tag : HTML 태그 자동 닫기 플러그인
-Live Server : 정적 파일을 로컬 서버에 올리고 자동 갱신해주는 플러그인
+- Atom Keymap : 아톰의 키 설정을 불러오는 플러그인
+- Vetur : Vue.js 플러그인
+- Night Owl : 코드 하이라이팅 플러그인
+- Material Dark Syntax : 코드 하이라이팅 플러그인
+- Google Material Icon Theme : 폴더 아이콘 테마
+- ESLint : 자바스크립트 문법 검사 플러그인
+- TSLint : 타입스크립트 문법 검사 플러그인
+- Auto Close tag : HTML 태그 자동 닫기 플러그인
+- Live Server : 정적 파일을 로컬 서버에 올리고 자동 갱신해주는 플러그인
 
 # 스타일 가이드 링크
 https://vuejs.org/v2/style-guide/
 
 
+<!--
 # Vue.js 완벽 가이드 - 실습과 리팩토링으로 배우는 실전 개념
 Serial Code : 344820-262728-1685197
 
@@ -83,6 +86,7 @@ Serial Code : 344820-324238-1781353
 
 # Typescript with Vue 실전 프로젝트
 Serial Code : 344820-324075-1638351
+-->
 
 # cli를 통해서 프로젝트 생성
 vue init webpack-simple [프로젝트 폴더명(보통은)]
