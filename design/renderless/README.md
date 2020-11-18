@@ -1,24 +1,2 @@
-# renderless
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# 데이터 수집의 부분을 컴포넌트로 분리하여 처리하고
+# view 컴포넌트에서는 화면 노출만 하도록 하는 구조의 컴포넌트 디자인 패턴

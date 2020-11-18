@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <fetch-data url="https://jsonplaceholder.typicode.com/users/1">
+
+    <!-- slot-scope 안에서만 response, loadning 이 접근이 가능함 -->
+    <div slot-scope="{ response, loading }">
+      <div v-if="!loading">
+        <!-- {{ response }} -->
+        <p>name : {{ response.name }}</p>
+        <p>email : {{ response.email }}</p>
+      </div>
+      <div v-if="loading">
+        Loading...
+      </div>
+    </div>
+  </fetch-data>  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FetchData from './components/FetchData.vue';
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
+    FetchData,
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
