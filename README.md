@@ -348,3 +348,41 @@ getter / setter 는 사용자에게는 보이지 않으나 속성에 액세스 �
  3. Controlled - 결합력이 높은 컴포넌트
  4. Renderless - 데이터 처리 컴포넌트
  ==> VUE-ADVANCED/design 밑에 common, controlled, rederless, slots 프로젝트 생성
+
+ # 환경 변수 파일을 이용한 옵션 설정 (properties 파일류)
+  제작한 코드를 서버에 배포할 때 환경 변수로 편하게 특정 값들을 바꿀 수 있는 방법
+  1) env 파일
+    CLI로 생성한 프로젝트로 개발 및 배포를 진행할 때 .env 라는 환경 변수 파일로 옵션들을 편하게 바꿀 수 있음
+    ```
+      # .env 파일
+      VUE_APP_LOCAL_URI="http://localhost:9090"
+      VUE_APP_TEST_SERVER="http://test.com:9090"
+
+      clientId="client-test1234"
+      clientServer="server-test1234"
+    ```
+    위에서 설정한 변수들을 가지고 애플리케이션 로직에 활용할 수도 있고, 웹팩으로 빌드를 할 때 위 변수의 내용을 반영할 수도 있음.
+
+    예를 들어 아래와 같이 API의 호출 URL에 .env 파일에 정의한 VUE_APP_LOCAL_URI 를 사용할 수 있습니다.
+    ```
+      // api/index.js
+      function fetchUser() {
+        return axios.get(`${VUE_APP_LOCAL_URI}users`);
+      }
+    ```
+    위와 같이 서비스 코드에서 .env 파일에 지정한 변수를 활용하려면 아래와 같이 웹팩에 추가 설정을 해줘야 합니다. (CLI 2.x)
+    ```
+      // webpack.config.js
+      const webpack = require('webpack');
+      const dotenv = require('dotenv');
+      const env = dotenv.config().parsed;
+
+      plugins: {
+        new webpack.DefinePlugin({
+          VUE_APP_LOCAL_URI: JSON.stringify(env.VUE_APP_LOCAL_URI),
+        }),
+      },
+    ```
+
+    CLI 3 부터는 .env 파일의 변수명에 prefix 로 'VUE_'를 사용하면 웹팩 설정 없이도 어플리케이션 내에서 사용 가능함
+    이 때, .env 파일의 내용은 자동으로 서버에 반영 안됨. 그러므로 서버 재기동 필요.

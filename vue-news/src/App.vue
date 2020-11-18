@@ -32,6 +32,9 @@ export default {
     }
   },
   created() {
+    // .env 에 설정한 변수명을 아래와 같이 활용할 수 있음 (created() 에서 활용함)
+    // prefix 'VUE_' 사용
+    console.log( process.env.VUE_APP_TITLE );
     bus.$on('start:spinner', this.startSpinner);
     bus.$on('end:spinner', this.stopSpinner);
   },
