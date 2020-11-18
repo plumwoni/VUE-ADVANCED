@@ -39,7 +39,71 @@
  3. axios 설치 : npm i axios --save
   --> save 옵션 : 설치되어 package.json의 "dependencies" 항목에 추가됨
 
+# CLI로 생성한 프로젝트 배포
+ 1. 배포 명령어 : npm run build
+ ```
+    예> npm run build
+      > vue-news@0.1.0 build C:\DEV\workspace\vue\VUE-ADVANCED\vue-news
+      > vue-cli-service build
 
+      \  Building for production...
+
+      DONE  Compiled successfully in 12304ms      16:47:04
+        File                                 Size                                                                         Gzipped      
+
+        dist\js\chunk-vendors.dca74fa1.js    163.15 KiB                                                                   56.22 KiB
+        dist\js\app.2378761e.js              10.96 KiB                                                                    3.51 KiB
+        dist\css\app.f46af70c.css            2.06 KiB                                                                     0.68 KiB
+
+        Images and other types of assets omitted.
+
+      DONE  Build complete. The dist directory is ready to be deployed.
+      INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+
+  ===> [프로젝트Root]/dist 의 내용(정적인 웹 파일들)을 웹서버 documentRoot에 올리면 됨
+ ```
+   
+ 2. Netlify 사이트를 이용한 배포
+   1) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_01.png" width=300 height=300>
+   2) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_02.png" width=300 height=300>
+   3) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_03.png" width=300 height=300>
+   4) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_04.png" width=300 height=300>
+   5) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_05.png" width=300 height=300>
+   6) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_06.png" width=300 height=300>
+   7) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_07.png" width=300 height=300>
+   8) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_08.png" width=300 height=300>
+   9) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_09.png" width=300 height=300>
+   10) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_10.png" width=300 height=300>
+   11) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_11.png" width=300 height=300>
+   12) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_12.png" width=300 height=300>
+   13) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_13.png" width=300 height=300>
+   14) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_14.png" width=300 height=300>
+   15) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_15.png" width=300 height=300>
+   16) <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_16.png" width=300 height=300>
+
+ 3. SPA 호스팅 시에 서버에 추가해줘야 하는 설정
+   - SPA에서는 URI의 라우팅 정보를 서버에서는 알 수 없으며 브라우저에 해당 정보들이 있음
+   - 그래서 Vue CLI 공식 문서의 배포 부분을 보면 다음과 같은 설명이 있음
+     ```
+       1. On Netlify, setup up a new project from GitHub with the following settings:
+           * Build Command: npm run build or yarn build
+           * Publish directory: dist
+       2. Hit the deploy button!
+
+       Also checkout vue-cli-plugin-netlify-lambda.
+
+       In order to receive direct hits using history mode on Vue Router, you need to create a file called _redirects under /public with the following content:
+
+      |  # Netlify settings for single-page application
+      |  /*    /index.html   200
+      |  More information on Netlify redirects documentation.
+     ```
+ 4. SPA 호스팅 시에 서버에 추가해줘야 하는 설정 적용 및 자동 배포
+  1) vue-news/public/ 에 '_redirects' 파일 생성하여 [/*  /index.html 200] 을 입력
+  2) 설정한 파일을 커밋/푸시
+  3) Netlify 에서 일정 시간 후에 자동 배포
+     <img src="https://github.com/plumwoni/VUE-ADVANCED/blob/main/readMe%EC%9A%A9_%EC%B0%B8%EC%A1%B0%ED%8C%8C%EC%9D%BC/netlify_17.png" width=300 height=300>
+  4) 확인
 # Tips
  - vue 파일 기본 형식 자동완성 (by veuter) : <vue -> tab키
  - 태그 입력 시, '<' 입력 없이 해당 내용을 입력하고, 예를 들면 <div 대신에 div 입력, 엔터키나 탭키를 누르면 자동완성됨
